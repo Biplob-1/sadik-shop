@@ -23,14 +23,14 @@ export const router = createBrowserRouter([
         }
       ]
     },
-    // {
-    //     path: 'dashboard',
-    //     element: '/',
-    //     children: [
-    //         {
-    //             path: '/',
-    //             element:
-    //         }
-    //     ]
-    // }
+    {
+        path: 'dashboard',
+        element: '/',
+        children: [
+            // {
+            //     path: 'products',
+            //     element: 
+            // }
+        ]
+    }
   ]);
