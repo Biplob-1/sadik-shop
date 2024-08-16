@@ -1,6 +1,26 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Header = () => {
+    const {user, logout, loading} = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        logout()
+        .then(() => {
+            navigate('/login')
+        })
+        .catch((error) => {
+            console.error('Error signing out:', error)
+        })
+    };
+
+    const NavLinks = <>
+        {/* <li><NavLink to={'/'}>Home</NavLink></li> */}
+        <li><NavLink to={'/products'}>Products</NavLink></li>
+    </>
+
     return(
         <div>
             <div className="navbar bg-base-100">
@@ -23,19 +43,26 @@ const Header = () => {
                 <ul
                     tabIndex={0}
                     className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                    <li><a>Products</a></li>
+                    {
+                        NavLinks
+                    }
                 </ul>
                 </div>
                 <a className="btn btn-ghost text-xl">SadikShop</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                <li><a>Products</a></li>
+                {
+                    NavLinks
+                }
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Logout</a>
-                <Link to='/login' className="btn"> Login</Link>
+            {user ? (
+                        <button type="button" onClick={handleLogout} className='btn'>Logout</button>
+                        ) : (
+                        <NavLink to={'/login'} className='btn'>Login</NavLink>
+                    )}
             </div>
             </div>
         </div>

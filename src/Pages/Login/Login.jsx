@@ -32,7 +32,7 @@ const Login = () => {
         // email & pass login
         signInWithEmailPass(email, password)
         .then(() => {
-            navigate('/')
+            navigate('/products')
         })
         .catch((error) => {
             if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
