@@ -26,7 +26,7 @@ const Header = () => {
                     <li><a>Products</a></li>
                 </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">Sadik Shop</a>
+                <a className="btn btn-ghost text-xl">SadikShop</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
